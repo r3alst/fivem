@@ -1,0 +1,21 @@
+version: '3'
+services:
+  fx:
+    image: fivem:latest
+    container_name: fx-server
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./txData:/home/fivem/txData
+      - ./resources:/home/fivem/resources
+      - ./cache:/home/fivem/cache
+      - ./server.cfg:/home/fivem/server.cfg
+    ports:
+      - 30120:30120
+      - 40120:40120
+    networks:
+      - fivem-network
+#Docker Networks
+networks:
+  fivem-network:
+    driver: bridge
