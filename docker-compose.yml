@@ -1,7 +1,7 @@
 version: '3'
 services:
   fx:
-    image: fivem:latest
+    image: ameeronline/fivem:latest
     container_name: fx-server
     restart: unless-stopped
     tty: true
