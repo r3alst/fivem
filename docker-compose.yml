@@ -1,5 +1,15 @@
 version: '3'
 services:
+  pma:
+    image: phpmyadmin:5
+    restart: unless-stopped
+    tty: true
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - 8083:80/tcp
+    networks:
+      - fivem-network
   fx:
     image: ameeronline/fivem:latest
     container_name: fx-server
