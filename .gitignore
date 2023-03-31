@@ -2,3 +2,11 @@ server.cfg
 txData
 resources
 cache
+.env.example
+mysql-data
+.env
+alpine/
+db/
+essentialmode.db
+permissions.cfg
+server.cfg.sa*

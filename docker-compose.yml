@@ -10,9 +10,27 @@ services:
       - ./resources:/home/fivem/resources
       - ./cache:/home/fivem/cache
       - ./server.cfg:/home/fivem/server.cfg
+      - ./permissions.cfg:/home/fivem/permissions.cfg
+      - ./essentialmode.db:/home/fivem/essentialmode.db
+      - ./db:/home/fivem/db
+      - ./alpine:/home/fivem/alpine
     ports:
-      - 30120:30120
+      - 30120:30120/tcp
+      - 30120:30120/udp
       - 40120:40120
+    networks:
+      - fivem-network
+  mysql:
+    image: mysql:8.0.32
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: fivem_db
+      MYSQL_USER: fivem_adm
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql-data:/var/lib/mysql
     networks:
       - fivem-network
 #Docker Networks
